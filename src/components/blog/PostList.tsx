@@ -48,10 +48,9 @@ export default function PostList({
       <Title level={1} style={{ textAlign: 'center', marginBottom: '48px' }}>
         {title}
       </Title>
-      
       <Row gutter={[24, 24]}>
         {posts.map((post) => (
-          <Col key={post.id} xs={24} sm={12} lg={8} xl={6}>
+          <Col key={post.id} xs={24} sm={12} lg={12} xl={12}>
             <PostCard post={post} />
           </Col>
         ))}

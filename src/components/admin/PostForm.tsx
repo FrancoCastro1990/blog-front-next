@@ -5,6 +5,7 @@ import { SaveOutlined, EyeOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import MarkdownEditor from '@/components/markdown/MarkdownEditor';
 import { CreatePostRequest, UpdatePostRequest, Post } from '@/types';
+import { useEffect } from 'react';
 
 const { Title } = Typography;
 
@@ -21,8 +22,12 @@ export default function PostForm({
   isLoading = false,
   title
 }: PostFormProps) {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<Partial<Post>>();
   const router = useRouter();
+
+useEffect(() => {
+  form.resetFields();
+}, [initialValues]);
 
   const handleFinish = (values: any) => {
     onSubmit(values);
@@ -86,7 +91,7 @@ export default function PostForm({
         >
           <MarkdownEditor
             value={form.getFieldValue('content') || ''}
-            onChange={(value) => form.setFieldValue('content', value)}
+            onChange={(value) => form.setFieldsValue({ content: value })}
             placeholder="Escribe el contenido del post en Markdown..."
             height={500}
           />

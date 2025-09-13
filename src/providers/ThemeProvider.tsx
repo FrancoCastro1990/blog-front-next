@@ -23,8 +23,8 @@ const darkTheme: ThemeConfig = {
   },
   components: {
     Layout: {
-      colorBgHeader: '#1c1c1c',
-      colorBgBody: '#0d0d0d',
+      headerBg: '#1c1c1c',
+      bodyBg: '#0d0d0d',
       colorBgTrigger: '#2a2a2a',
     },
     Card: {
@@ -53,8 +53,8 @@ const lightTheme: ThemeConfig = {
   },
   components: {
     Layout: {
-      colorBgHeader: '#f5f5f5',
-      colorBgBody: '#fdfdfd',
+      headerBg: '#f5f5f5',
+      bodyBg: '#fdfdfd',
       colorBgTrigger: '#e8e8e8',
     },
     Card: {

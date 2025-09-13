@@ -6,6 +6,7 @@ import Link from 'next/link';
 import dayjs from 'dayjs';
 import { Post } from '@/types';
 import styles from '@/styles/components/PostCard.module.css';
+import MarkdownPreview from '@/components/markdown/MarkdownPreview';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -14,8 +15,9 @@ interface PostCardProps {
 }
 
 export default function PostCard({ post }: PostCardProps) {
+  // Limitar el preview a los primeros 150 caracteres, pero renderizar como markdown
   const excerpt = post.content.length > 150 
-    ? post.content.substring(0, 150) + '...' 
+    ? post.content.substring(0, 150) + '...'
     : post.content;
 
   return (
@@ -39,9 +41,7 @@ export default function PostCard({ post }: PostCardProps) {
         </Space>
 
         <div className={styles.postContent}>
-          <Paragraph ellipsis={{ rows: 4, expandable: false }}>
-            {excerpt}
-          </Paragraph>
+          <MarkdownPreview  content={excerpt} style={{ maxHeight: 120, overflow: 'hidden' }} />
         </div>
 
         <div className={styles.tagContainer}>
